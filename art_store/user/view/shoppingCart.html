@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>shoppingCart</title>
+    <link href="../include/css/upperDirect.css" rel="stylesheet">
+    <link href="../include/css/shoppingCart.css" rel="stylesheet">
+    <script src="../include/js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<div id="main-div">
+    <div>
+        <span id="name-logo">Wisdom Waste</span>
+        <br>
+        <span id="describe">you can find anything that you are interested in</span>
+        <a href="./index.php?a=showSearch" class="search">Search</a>
+        <a href="./index.php?a=personalSpace" class="right-up-link" id="username"><?=$username?></a>
+        <a href="./index.php?a=showHomePageAfter&b=logout" class="right-up-link" id="logout">Logout</a>
+    </div>
+    <br>
+    <nav class="medium-nav">
+        <a href="./index.php?a=showHomePageAfter" class="nav-link">HomePage</a>
+        <a href="./index.php?a=personalSpace" class="nav-link">My Space</a>
+        <a href="./index.php?a=showAllDetails" class="nav-link">ShopDetails</a>
+        <a href="./index.php?a=shoppingCart" class="nav-link" id="cart">My Cart</a>
+        <a href="./index.php?a=uploadAndChange" class="nav-link">Upload</a>
+    </nav>
+    <hr id="hr">
+    <div id="cart-up">
+        <div id="cart-name">
+            My Shopping Cart
+        </div>
+        <input type="text" placeholder="Search" id="search-cart">
+    </div>
+    <div id="cart-down">
+        <?php
+            $allmoney=0;
+            $sellflag=0;
+            $selloutname="";
+            while($row=$shoparts->fetch_row()){
+        ?>
+        <div class="art">
+            <img src="<?=$row[11]?>" alt="art photo" class="art-photo">
+            <div class="art-info">
+                <span class="art-name"><?=$row[0]?></span><br>
+                <p class="art-author"><span class="author">By&nbsp;&nbsp;&nbsp;</span><?=$row[1]?></p>
+                <form method="post">
+                    <input type="text" style="display: none" name="artworkid" value="<?=$row[12]?>">
+                    <p class="price">$&nbsp;<?=$row[2]?>&nbsp;
+                    <button class="delete" type="submit" style="font-size: large;font-family: HGB8X_CNKI,serif;">&nbsp;&nbsp;Delete&nbsp;&nbsp;</button></p>
+                </form>
+                <a href="./index.php?a=showArtDetail&artid=<?=$row[12]?>" class="see-detail">See Details</a>
+            </div>
+            <div class="art-intro">
+                <p>Introduction: <?=$row[9]?>
+                </p>
+                <?php
+                if($row[14]){
+                    $sellstate="SOLD";
+                    $deletehint="Please delete it!";
+                    $sellflag=1;
+                    $selloutname=$row[0];
+                }else{
+                    $sellstate="";
+                    $deletehint="";
+                }
+                if($row[17]){
+                    $change="CHANGED";
+                }else{
+                    $change="";
+                }
+                ?>
+                <span class="sold"><?=$sellstate?></span><span class="changed"><?=$change?></span>
+                <br><br>
+                <span style="font-family: HGB8X_CNKI,serif;margin-right: 5%"><?=$deletehint?></span>
+            </div>
+        </div>
+        <?php
+             $allmoney+=$row[2];
+        }
+        ?>
+        <div id="pay-money">
+            <button type="button" id="pay-button" onclick="payListDialog()">PAY <span>$&nbsp;<?=$allmoney?></span></button>
+        </div>
+    </div>
+    <div id="foot">
+        <br>
+        <hr>
+        Have a good mood these days.
+        <br>
+        this is just available for lxy@2022. if you have any question, please send email to 2975533710@qq.com
+    </div>
+</div>
+
+<!--遮罩层-->
+<div id="dialog-mask" class="dialog-mask opacity"></div>
+<!--弹出框div-->
+<!--确认框中需显示 总价、账户余额、地址信息、电话
+信息 并具有确认、取消按钮-->
+<div id="dialog" class="box">
+    <div id="pay-info">
+        <p class="info-p">
+            <span class="pay-label">Total Price: &nbsp;&nbsp;</span>
+            <span id="all-price">$&nbsp;<?=$allmoney?></span>
+        </p>
+        <p class="info-p">
+            <span class="pay-label">My leftMoney: &nbsp;&nbsp;</span>
+            <span id="balance">$&nbsp;<?=$user[5]?></span>
+        </p>
+        <p class="info-p">
+            <span class="pay-label">Address: &nbsp;&nbsp;</span>
+            <span id="address-info"><?=$user[7]?></span>
+        </p>
+        <p class="info-p">
+            <span class="pay-label">Telephone: &nbsp;&nbsp;</span>
+            <span id="phone"><?=$user[6]?></span>
+        </p>
+        <div id="pay-info-button">
+            <button type="button" id="return" class="pay-info-button"  onclick="closePayList()">CANCEL</button>
+            <input type="text" id="sellflag" style="display: none" value="<?=$sellflag?>">
+            <input type="text" id="selloutname" style="display: none" value="<?=$selloutname?>">
+            <input type="text" id="allprice" style="display: none" value="<?=$allmoney?>">
+            <input type="text" id="myleft" style="display: none" value="<?=$user[5]?>">
+            <button type="button" id="confirm" class="pay-info-button" onclick="confirmPay()">CONFIRM</button>
+        </div>
+    </div>
+
+</div>
+<script>
+    function payListDialog(){
+        $("#dialog").show()
+        $("#dialog-mask").show()
+    }
+    function closePayList(){
+        $("#dialog").hide()
+        $("#dialog-mask").hide()
+    }
+    function confirmPay(){
+        var sellflag=document.getElementById('sellflag').value;
+        var selloutname=document.getElementById('selloutname').value;
+        var allmoney=document.getElementById('allprice').value;
+        var leftmoney=document.getElementById('myleft').value;
+        var newmoney=leftmoney-allmoney;
+        if(sellflag==1){
+            alert("Sorry, artwork "+selloutname+" has been sold out!");
+        }else if(newmoney<0){
+            alert("Sorry, your left money is not enough!")
+        }else if(allmoney==0){
+            return 0;
+        }else{
+            var newmoney=leftmoney-allmoney;
+            var request=new XMLHttpRequest();
+            request.open('POST','./index.php?a=shoppingCart',true);
+            request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            var msg="delete=1"+"&newmoney="+newmoney;
+            request.send(msg)
+            alert("succeed creating your orders!")
+            $("#dialog").hide()
+            $("#dialog-mask").hide()
+            window.location.href="./index.php?a=shoppingCart";
+        }
+}
+</script>
+</body>
+</html>

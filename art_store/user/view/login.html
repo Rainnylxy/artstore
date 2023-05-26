@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>login</title>
+    <link href="../include/css/login.css" rel="stylesheet">
+    <script src="../include/js/login.js"></script>
+</head>
+<body>
+<div class="main-div">
+    <div>
+        <span id="name-logo">Wisdom Waste</span>
+        <br>
+        <span id="describe">you can find anything that you are interested in</span>
+        <a href="./index.php?a=showHomePageBefore" class="right-up-link">Home Page</a>
+        <a href="./index.php?a=showRegister" class="right-up-link-re">Register</a>
+    </div>
+    <div>
+        <br><br>
+        <span id="medium-p">
+        W i s d o m--W a s t e
+    </span>
+    </div>
+    <br>
+    <br>
+    <div id="login-photo-div">
+        <img src="../../public/img/homeMainPhoto.png" id="login-photo">
+    </div>
+    <div id="login-frame" class="frame">
+        <div id="login-in">Please Sign in</div>
+        <br><br>
+        <form id="login-form" >
+            <input class="input" id="username" type="text" placeholder="Username / Email" name="username" value="<?=$username?>" onkeyup="test()"><br>
+            <input class="input" id="password" type="password" placeholder="Password" name="password" value="<?=$u_pass?>" onkeyup="test()"><br>
+            <div>
+                <input class="input" id="check-code" type="text" placeholder="check code" name="checkCode" onkeyup="test()"/>
+                <img  id="code" src="./getCheckCode.php" onclick="refreshImage()" title="click to refresh"/>
+            </div>
+            <br>
+            <br>
+            <div id="hint"><?=$error?></div>
+            <input id="submit1" type="button" value="submit" onclick="Submit()">
+            <button id="submit2" onclick="toRegister()" type="button">register</button>
+            <script>
+                function toRegister(){
+                    window.location.href='./index.php?a=showRegister'
+                }
+            </script>
+        </form>
+    </div>
+</div>
+<script>
+    function refreshImage(){
+        document.getElementById('code').src="./getCheckCode.php?"+Math.random();
+    }
+</script>
+<div id="foot">
+    <br><br><br>
+    <hr>
+    Have a good mood these days.
+    <br>
+    this is just available for lxy@2022. if you have any question, please send email to 2975533710@qq.com
+</div>
+</body>
+</html>

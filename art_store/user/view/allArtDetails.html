@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>allArtDetails</title>
+    <link href="../include/css/allArtDetails.css" rel="stylesheet">
+    <link href="../include/css/searchPage.css" rel="stylesheet">
+    <link href="../include/css/homePageBefore.css" rel="stylesheet">
+</head>
+<body>
+<div>
+    <div>
+        <span id="name-logo">Wisdom Waste</span>
+        <br>
+        <span id="describe">you can find anything that you are interested in</span>
+        <a href="./index.php?a=showSearch" class="search">Search</a>
+        <a href="./index.php?a=personalSpace" class="right-up-link" id="username"><?=$username?$username:'login in'?></a>
+        <a href="./index.php?a=showHomePageAfter&b=logout" class="right-up-link" id="logout">Logout</a>
+    </div>
+    <div>
+        <br>
+        <span id="medium-p">W i s d o m--W a s t e</span>
+        <span id="medium-intro">A place where art waste lives in</span>
+        <br><br><br>
+        <nav class="medium-nav">
+            <a href="./index.php?a=showHomePageAfter" class="nav-link">HomePage</a>
+            <a href="./index.php?a=personalSpace" class="nav-link">My Space</a>
+            <a href="./index.php?a=showAllDetails" class="nav-link" id="shop-details">ShopDetails</a>
+            <a href="./index.php?a=shoppingCart" class="nav-link">My Cart</a>
+            <a href="./index.php?a=uploadAndChange" class="nav-link">Upload</a>
+        </nav>
+    </div>
+    <br><br>
+</div>
+<div>
+    <div id="img-frame">
+        <?php
+            while($row=$allArtWorkList->fetch_row())
+            {
+        ?>
+        <div class="img-div">
+            <div style="width: 100px;background-color:#D3DEDC;height: 10px"></div><br>
+            <a href="./index.php?a=showArtDetail&artid=<?=$row[12]?>"><img src="<?=$row[11]?>" class="hottest-work"></a>
+            <br>
+            <div class="msg">
+                <span style="font-size: small">Name</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[0]?></span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size: small">Artist</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[1]?></span><br>
+                <span style="font-size: medium">Price</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: medium;color: #fc9e9e;font-weight: 900">$&nbsp;<?=$row[2]?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>Visits</span>: <?=$row[3]?>
+                <br>
+                <span>Introduct</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: large"><?=$row[9]?$row[9]:'no introduction'?></span>
+            </div>
+        </div>
+        <?php
+            if($row=$allArtWorkList->fetch_row()){}
+            else{ break;}
+        ?>
+        <div class="img-div">
+            <div style="width: 100px;background-color:#DCD6F7;height: 10px"></div><br>
+            <a href="./index.php?a=showArtDetail&artid=<?=$row[12]?>"><img src="<?=$row[11]?>" class="hottest-work"></a>
+            <br>
+            <div class="msg">
+                <span style="font-size: small">Name</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[0]?></span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size: small">Artist</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[1]?></span><br>
+                <span style="font-size: medium">Price</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: medium;color: #fc9e9e;font-weight: 900">$&nbsp;<?=$row[2]?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>Visits</span>: <?=$row[3]?>
+                <br>
+                <span>Introduct</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: large"><?=$row[9]?$row[9]:'no introduction'?></span>
+            </div>
+        </div>
+        <?php
+            if($row=$allArtWorkList->fetch_row()){}
+            else{ break;}
+        ?>
+        <div class="img-div">
+            <div style="width: 100px;background-color:#8785A2;height: 10px"></div><br>
+            <a href="./index.php?a=showArtDetail&artid=<?=$row[12]?>"><img src="<?=$row[11]?>" class="hottest-work"></a>
+            <br>
+            <div class="msg">
+                <span style="font-size: small">Name</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[0]?></span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size: small">Artist</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[1]?></span><br>
+                <span style="font-size: medium">Price</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: medium;color: #fc9e9e;font-weight: 900">$&nbsp;<?=$row[2]?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>Visits</span>: <?=$row[3]?>
+                <br>
+                <span>Introduct</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: large"><?=$row[9]?$row[9]:'no introduction'?></span>
+            </div>
+        </div>
+        <br><br>
+       <?php
+         }
+        ?>
+    </div>
+</div>
+<div id="foot">
+    <p>
+    <hr id="hrr">
+    Have a good mood these days.
+    <br>
+    this is just available for lxy@2022. if you have any question, please send email to 2975533710@qq.com
+    </p>
+</div>
+</body>
+</html>

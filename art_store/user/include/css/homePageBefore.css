@@ -1,0 +1,181 @@
+#main-div{
+    height: 900px;
+}
+#username{
+    color: black;
+    font-family: HGB8X_CNKI,serif;
+}
+#homepage{
+    color: #ff8c8c;
+}
+#name-logo{
+    font-family: "Arial Narrow", serif;
+    font-weight: 900;
+    font-size: large;
+    width: 20%;
+}
+#describe{
+    color: #8f9191;
+    font-size: x-small;
+    font-family: HGB8X_CNKI,serif;
+    font-weight: 500;
+}
+.search{
+    margin-left: 60%;
+    text-decoration: none;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    font-style: italic;
+    color: black;
+    font-family: HGB8X_CNKI,serif;
+}
+.search:hover{
+    color: #ff8c8c;
+}
+.right-up-link{
+    margin-left: 2%;
+    text-decoration: none;
+    font-weight: 500;
+    color: #ff8c8c;
+    font-style: italic;
+    font-size: medium;
+}
+.right-up-link:hover{
+    color: black;
+    font-weight: 900;
+}
+#logout{
+    color: #8f9191;
+}
+#logout:hover{
+    color: #ff8c8c;
+    font-size: medium;
+    font-weight: 500;
+}
+#medium-p{
+    font-size: xxx-large;
+    font-weight: 700;
+    margin-left: 33%;
+}
+#medium-intro{
+    margin-left: 43%;
+    font-style: italic;
+    margin-top: 0;
+    color: #5b5656;
+}
+.medium-nav{
+    margin-left: 25%;
+}
+
+.nav-link{
+    margin-left: 6%;
+    text-decoration: none;
+    font-weight: 500;
+    font-family: HGB8X_CNKI,serif;
+    color: black;
+    font-size: large;
+}
+.nav-link:hover{
+    color: #ff8c8c;
+}
+
+#slide-up{
+    height: 500px;
+}
+#slide-left{
+    width: 50%;
+    height: 90%;
+    margin-left: 5%;
+    text-align: center;
+    float: left;
+}
+.img-class{
+    font-family: HGB8X_CNKI,serif;
+    font-size: large;
+}
+#img-change{
+    cursor: pointer;
+    width: 710px;
+    height: 420px;
+    margin-right: -3%;
+}
+#slide-right{
+    width: 40%;
+    margin-left: 4%;
+    text-align: center;
+    float: left;
+}
+.latest-work{
+    margin-left: 0;
+    padding-left: 0;
+    width: 150px;
+    height: 130px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.msg{
+    font-family: HGB8X_CNKI,serif;
+    float: right;
+    margin-right: 50px;
+    display: inline;
+    width: 230px;
+    margin-top: 5px;
+}
+
+#slide-down{
+    margin-left: 5%;
+    height: 450px;
+}
+.img-class-low{
+    font-family: HGB8X_CNKI,serif;
+    font-size: large;
+}
+.hottest-work{
+    height: 220px;
+    width: 95%;
+    cursor: pointer;
+}
+.img-down{
+    width: 22%;
+    float: left;
+    margin-right: 3%;
+}
+
+#point{
+    margin-left: 49%;
+    width: 60px;
+}
+#login-in-down{
+    color: black;
+    text-decoration: none;
+    font-size: small;
+    margin-left: 42%;
+}
+#login-in-down:hover{
+    color: #43919B;
+}
+
+#foot{
+    font-size: 10px;
+    margin-top: 0;
+    color: #5b5656;
+    font-style: italic;
+}
+#sign-in{
+    font-size: x-large;
+    font-style: italic;
+    font-weight: 900;
+}
+.pointList{
+    margin-left: 220px;
+    margin-top: 10px;
+}
+.point{
+    float: left;
+    margin-left: 40px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid black;
+    border-radius: 100%;
+}

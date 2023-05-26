@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>artDetails</title>
+    <link href="../include/css/artDetails.css" rel="stylesheet">
+    <link href="../include/css/upperDirect.css" rel="stylesheet">
+    <script src="../include/js/artDetail.js"></script>
+    <script src="../include/js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<!-- 艺术品图片、名称、作者姓名、价格、访问量、是否已售出、发布日期（20级）、发布
+者用户名（20级）、详细参数（指年份、大小（长度与宽度）、时代、风格等至少4项）
+*空数据替代信息
+*加入购物车
+-->
+    <div>
+        <span id="name-logo">Wisdom Waste</span>
+        <br>
+        <span id="describe">you can find anything that you are interested in</span>
+        <a href="./index.php?a=showSearch" class="search">Search</a>
+        <a href="./index.php?a=personalSpace" class="right-up-link" id="username"><?=$username?$username:"login in"?></a>
+        <a href="./index.php?a=showHomePageAfter&b=logout" class="right-up-link">Logout</a>
+    </div>
+    <br>
+    <nav class="medium-nav">
+        <a href="./index.php?a=showHomePageAfter" class="nav-link">HomePage</a>
+        <a href="./index.php?a=personalSpace" class="nav-link">My Space</a>
+        <a href="./index.php?a=showAllDetails" class="nav-link" id="shop-details">ShopDetails</a>
+        <a href="./index.php?a=shoppingCart" class="nav-link">My Cart</a>
+        <a href="./index.php?a=uploadAndChange" class="nav-link">Upload</a>
+    </nav>
+    <br>
+    <hr id="hr">
+    <div id="main-down">
+        <div id="main-down-up">
+            <div class="demo">
+                <div class="small-box">
+                    <div class="float-box"></div>
+                    <img src="<?=$artInfo[11]?>" class='small-img'/>
+                </div>
+            </div>
+            <div class="big-box" id="tt">
+                <img src="<?=$artInfo[11]?>"/>
+            </div>
+            <div class="msg">
+                <div id="name">
+                    <span style="font-size: xx-large"><?=$artInfo[0]?></span><br>
+                    <span id="upload">(<?=$artInfo[4]?>, uploaded by <?=$artInfo[5]?>)</span>
+                    <br>
+                    <?php
+                    if($artInfo[14]==0){
+                        $status="";
+                    }else{
+                        $status="SELL OUT";
+                    }
+                    ?>
+                    <span id="sell-condition"><?=$status?></span>
+                </div>
+                <div id="other-msg">
+                    <div class="msg-item">
+                        <span class="tag">Price: </span>
+                        <span class="contain" id="price">$<?=$artInfo[2]?></span>
+                        <br>
+                    </div>
+                    <div class="msg-item">
+                        <span class="tag">Visits: </span>
+                        <span class="contain"><?=$artInfo[3]?></span>
+                        <br>
+                    </div>
+                    <div class="msg-item">
+                        <span class="tag">Artist: </span>
+                        <span class="contain"><?=$artInfo[1]?$artInfo[1]:"still no artist"?></span>
+                        <br>
+                    </div>
+                    <div class="msg-item">
+                        <span class="tag">Style: </span>
+                        <span class="contain"><?=$artInfo[10]?$artInfo[10]:"still no style"?></span>
+                        <br>
+                    </div>
+                </div>
+                <div id="msg1">
+                    <div class="msg-item">
+                        <span class="tag">Size: </span>
+                        <span class="contain"><?=$artInfo[7]?> em * <?=$artInfo[8]?> em</span>
+                        <br>
+                    </div>
+                    <div class="msg-item">
+                        <span class="tag">WorkDate: </span>
+                        <span class="contain"><?=$artInfo[6]?$artInfo[6]:"still no this character"?></span>
+                        <br>
+                    </div>
+                    <div class="msg-item">
+                        <span class="tag">Times: </span>
+                        <span class="contain"><?=$artInfo[15]?$artInfo[15]:"still no times"?></span>
+                        <br>
+                    </div>
+                    <div class="msg-item">
+                        <span class="tag">Introduction: </span>
+                        <span class="contain"><?=$artInfo[9]?$artInfo[9]:"still no introduction"?></span>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main-down-down">
+            <div id="icon-div">
+                <img src="../../public/img/点赞图标.png" class="icon">
+                <img src="../../public/img/收藏图标.png" class="icon">
+                <?php
+                    $checkcartsql="SELECT * FROM shopcart WHERE artworkid='{$artId}' AND username='{$username}'";
+                    $checkres=$artWork->conn->query($checkcartsql);
+                    $rowsnum = mysqli_num_rows($checkres);
+                    if($rowsnum){
+                        $imgpath='../../public/img/购物车空.png';
+                    }else{
+                        $imgpath='../../public/img/购物车图标.png';
+                        if(!isset($_GET['userName'])){
+                            $_SESSION['userName']='';
+                        }
+                        if(isset($_GET['userName'])&&($_GET['userName']!=$_SESSION['userName'])){
+                            $_SESSION['userName']=$_GET['userName'];
+                            $temp=$artWork->getWork("WHERE id='{$artId}'");
+                            if($temp[14]){
+                                echo ("<script>alert('Can not add, it has been sold out!')</script>");
+                            }else{
+                                $shopcartsql="INSERT INTO shopcart VALUES('{$artId}','{$_GET['userName']}')";
+                                $artWork->conn->query($shopcartsql);
+                            }
+                        }
+                    }
+                ?>
+                <form method="post" action="index.php?a=showArtDetail&artid=<?=$artId?>&userName=<?=$username?>&addVisit=0" style="display: inline">
+                    <button type='submit' id='icon-button'>
+                        <img src="<?=$imgpath?>" class="icon">
+                    </button>
+                </form>
+                <img src="../../public/img/评论图标.png" class="icon">
+                <img src="../../public/img/分享图标.png" class="icon">
+            </div>
+
+            <br>
+                <p class="comment">HOT Comments:</p>
+                <div id="comment-frame">
+                    <?php
+                        $commentsEntity=new comment();
+                        if($username){
+                            if(!isset($_POST['content'])){
+                                $_SESSION['content']='';
+                            }
+                            if(isset($_POST['content'])&&$_POST['content']!=$_SESSION['content']){
+                                $_SESSION['content']=$_POST['content'];
+                                $date=date('d-m-y h:i:s');
+                                $commentsql="INSERT IGNORE INTO comment (username, artworkid,content,date) VALUES ('{$username}','{$artId}','{$_POST['content']}',NOW())";
+                                $commentsEntity->conn->query($commentsql);
+                            }
+                            if(!isset($_POST['like'])){
+                                $_SESSION['delete']='';
+                            }
+                            if(isset($_POST['like'])&&isset($_POST['commentid'])){
+                                $like=$_POST['like'];
+                                if($like=="Like it"){
+                                    $addlikesql="INSERT IGNORE INTO likes (commentid, username) VALUES ('{$_POST['commentid']}','{$username}')";
+                                    $commentsEntity->conn->query($addlikesql);
+                                }else if($like=="concel like"){
+                                    $concellikesql="DELETE FROM likes WHERE commentid='{$_POST['commentid']}' AND username='{$username}'";
+                                    $commentsEntity->conn->query($concellikesql);
+                                }
+                            }
+
+                            if(isset($_POST['delete'])&&($_POST['delete']!=$_SESSION['delete']||$_POST['commentid']!=$_SESSION['commentid'])){
+                                $_SESSION['delete']=$_POST['delete'];
+                                $deletesql="DELETE IGNORE FROM comment WHERE id='{$_POST['commentid']}'";
+                                $commentsEntity->conn->query($deletesql);
+                                $concellikesql="DELETE FROM likes WHERE commentid='{$_POST['commentid']}'";
+                                $commentsEntity->conn->query($concellikesql);
+                             }
+                            }else{
+                                echo "<script>
+                                            alert('please login in!!');
+                                        </script>";
+                                }
+                        $cond="WHERE artworkid='{$artInfo[12]}' ORDER BY likes desc";
+                        $res=$commentsEntity->getCommentsList($cond);
+                        while($comment=$res->fetch_row()){
+                    ?>
+                    <div class="comment-item">
+                        <div style="margin-left: 10%">
+                            <img src="../../public/img/头像-男学生6.png" class="head-photo">
+                            <div class="comment-header">
+                                <p class="writer-name"><?=$comment[0]?>:</p>
+                                <span class="comment-date"><?=$comment[4]?></span>
+                            </div>
+                            <div class="comment-content">
+                                <p>" <?=$comment[2]?>"</p>
+                            </div>
+                            <div>
+                                <form method="post" style="display: inline;margin-left: 50%">
+                                <?php
+                                    $info1="Like it";
+                                    $likesql="
+                                       SELECT * FROM likes WHERE commentid='{$comment[3]}' AND username='{$username}'
+                                     ";
+                                    $likes=$commentsEntity->conn->query($likesql);
+                                    $like = $likes->fetch_row();
+                                    if($like&&($like[1]==$username)){
+                                        $info1="concel like";
+                                    }
+                                ?>
+                                <input type="text" name="addVisit" value="0" style="visibility:hidden"> 
+                                <input type="text" name="commentid" value="<?=$comment[3]?>" style="visibility: hidden"/>
+                                <span style="font-size: small;color: #ef6a6a;font-style: italic;">LIKES: <?=$comment[5]?></span>
+                                <input
+                                            name="like"
+                                            type="submit"
+                                            value="<?=$info1?>"
+                                            style="
+                                        color: black;
+                                        margin-left:2%;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                               width: 100px;height: 40px;background-color: #fc9e9e;font-size: large;border: 1px solid black;cursor: pointer;">
+
+                                    <?php
+                                        if($comment[0] == $username){
+                                            $info="Delete";
+                                         }else{
+                                            $info="";
+                                         }
+                                        ?>
+                                    <input
+                                            type="submit"
+                                            name="delete"
+                                            value="<?=$info?>"
+                                            style="margin-left:2%;width: 100px;height: 40px;font-size: large;cursor: pointer;background-color: transparent;border: 0;color: red">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="comment-hr">
+                    <?php
+                        }
+                    ?>
+                    <div class="comment-item">
+                        <div style="margin-left: 10%">
+                            <form method="post">
+                                 <input type="text" name="addVisit" value="0" style="visibility:hidden"> 
+                            <input type="text" name="content" placeholder="commit your opinion about it" id="my-comment"/>
+                            <br>
+                            <button id="submit-comment">submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <hr class="comment-hr">
+            <br>
+            <div id="foot">
+                <br><br>
+                <hr>
+                Have a good mood these days.
+                <br>
+                this is just available for lxy@2022. if you have any question, please send email to 2975533710@qq.com
+            </div>
+            <script>
+                function changeColor(){
+                    var a = document.getElementById("icon-button");
+                    a.style.filter= "invert(53%) sepia(70%) saturate(1647%) hue-rotate(321deg) brightness(100%) contrast(94%)";
+                }
+            </script>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        var objDemo = document.getElementsByClassName("demo")[0];
+        var objSmallBox = document.getElementsByClassName("small-box")[0];
+        var objFloatBox = document.getElementsByClassName("float-box")[0];
+        var smallImg = document.getElementsByClassName("small-img")[0];
+        var objBigBox = document.getElementsByClassName("big-box")[0];
+        var objBigBoxImage = objBigBox.getElementsByTagName("img")[0];
+
+        //移入事件
+        smallImg.onmouseover = function () {
+            objFloatBox.style.display = "inline-block"
+            objBigBox.style.display = "inline-block"
+        }
+        //移出事件
+        smallImg.onmouseout = function () {
+            objFloatBox.style.display = "none"
+            objBigBox.style.display = "none"
+        }
+        //移动事件
+        smallImg.onmousemove = function (ev) {
+            var _event = ev || window.event;
+
+            /* 获取鼠标中心点*/
+            var left = _event.clientX - objDemo.offsetLeft - objSmallBox.offsetLeft - objFloatBox.offsetWidth / 2;
+            var top = _event.clientY - objDemo.offsetTop - objSmallBox.offsetTop - objFloatBox.offsetHeight / 2;
+
+            if (left < 0) {
+                left = 0;
+            } else if (left > (objSmallBox.offsetWidth - objFloatBox.offsetWidth))
+            {
+                left = objSmallBox.offsetWidth - objFloatBox.offsetWidth;
+            }
+
+            if (top < 0) {
+                top = 0;
+            } else if (top > (objSmallBox.offsetHeight - objFloatBox.offsetHeight))
+            {
+                top = objSmallBox.offsetHeight - objFloatBox.offsetHeight;
+            }
+
+            /* 放大镜的位置 */
+            objFloatBox.style.left = left + "px";
+            objFloatBox.style.top = top + "px";
+
+            /* 计算百分比 */
+            var percentX = left / (objSmallBox.offsetWidth - objFloatBox.offsetWidth);
+            var percentY = top / (objSmallBox.offsetHeight - objFloatBox.offsetHeight);
+
+            /* 显示图片相对应位置 */
+            objBigBoxImage.style.left = -percentX * (objBigBoxImage.offsetWidth - objBigBox.offsetWidth) + "px";
+            objBigBoxImage.style.top = -percentY * (objBigBoxImage.offsetHeight - objBigBox.offsetHeight) + "px";
+        }
+    }
+</script>
+</body>
+</html>

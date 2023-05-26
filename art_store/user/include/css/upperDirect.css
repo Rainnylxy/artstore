@@ -1,0 +1,62 @@
+#name-logo{
+    font-family: "Arial Narrow", serif;
+    font-weight: 900;
+    font-size: large;
+    width: 20%;
+}
+.search{
+    margin-left: 60%;
+    text-decoration: none;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    font-style: italic;
+    color: black;
+    font-family: HGB8X_CNKI,serif;
+}
+.search:hover{
+    color: #ff8c8c;
+}
+#describe{
+    color: #8f9191;
+    font-size: x-small;
+    font-family: HGB8X_CNKI,serif;
+    font-weight: 500;
+}
+
+#username{
+    color: black;
+    font-family: HGB8X_CNKI,serif;
+}
+.right-up-link{
+    font-family: HGB8X_CNKI,serif;
+    margin-left: 2%;
+    text-decoration: none;
+    font-weight: 500;
+    color: #8f9191;
+    font-style: italic;
+    font-size: medium;
+}
+.right-up-link:hover{
+    color: #ff8c8c;
+}
+
+.medium-nav{
+    margin-left: 27%;
+}
+.nav-link{
+    margin-left: 4%;
+    text-decoration: none;
+    font-weight: 550;
+    font-family: HGB8X_CNKI,serif;
+    color: black;
+    font-size: larger;
+}
+.nav-link:hover{
+    color: #ff8c8c;
+}
+
+#hr{
+    border: 1px solid #767676;
+    margin-top: 15px;
+}

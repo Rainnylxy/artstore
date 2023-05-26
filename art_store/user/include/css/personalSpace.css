@@ -1,0 +1,202 @@
+#personal-info-frame{
+    width: 90%;
+    height: 250px;
+    margin-left: 5%;
+    padding-top: 1%;
+}
+#myspace{
+    color: #fc9e9e;
+}
+#info-left{
+    width: 43%;
+    border: 1px solid #dbdfe3;
+    display: inline-block;
+    height: 100%
+}
+#info-left-left{
+    text-align: center;
+    width: 34%;
+    height: 100%;
+    display: inline-block
+}
+#head-photo{
+    width: 120px;
+    height: 120px;
+    margin-top: 5%;
+}
+.info-button{
+    height: 30px;
+    width: 125px;
+    background-color: #fc9e9e;
+    margin-top: 10%;
+    font-size: medium;
+    font-family: HGB8X_CNKI,serif;
+    color: black;
+    cursor: pointer;
+    border: 0;
+}
+.info-button:hover{
+    font-weight: 900;
+}
+
+#personal-info{
+    padding-top: 2.6%;
+    display: inline-block;
+    font-size: medium;
+    position: absolute;
+    text-align: left;
+    font-weight: 600;
+    font-family: HGB8X_CNKI,serif;
+}
+#surplus{
+    color: #f13939;
+}
+
+#info-right{
+    text-align: center;
+    width: 50%;
+    height: 210px;
+    position: absolute;
+    margin-left: 0;
+    display: inline-block;
+    padding-top: 3%;
+}
+#info-right-label{
+    font-size: large;
+    font-family: HGB8X_CNKI,serif;
+}
+#info-right-people{
+    margin-top: 6%;
+}
+.people{
+    margin-left: 5%;
+    font-family: HGB8X_CNKI,serif;
+    display: inline-block;
+    text-align: center;
+}
+.people-photo{
+    width: 100px;
+    height: 100px;
+    border-radius: 5%;
+}
+
+#down-frame{
+    margin-top: 2%;
+    margin-left: 5%;
+}
+
+.label{
+    font-size: larger;
+    font-family: HGB8X_CNKI,serif;
+    font-weight: 900;
+}
+#upload-photo{
+    margin-top: 2%;
+}
+.photo-div{
+    margin-left: 7%;
+    font-family: HGB8X_CNKI,serif;
+    display: inline-block;
+    text-align: center;
+}
+.upload-photo{
+    border: 1px solid #ececec;
+    width: 230px;
+    height: 180px;
+    cursor: pointer;
+}
+.hr{
+   margin-right: 5%;
+   border: 1px solid #dbdfe3;
+}
+.table-div{
+    margin-top: 2%;
+    text-align: center;
+    font-family: HGB8X_CNKI,serif;
+}
+
+.table{
+    margin-left: 5%;
+    border-collapse: collapse;
+    width: 80%;
+}
+.table, .table tr th, .table tr td{
+    border: 2px solid #a6a6a6;
+}
+.table-header{
+    height: 40px;
+}
+.name{
+    cursor: pointer;
+}
+.name:hover{
+    color: #fc9e9e;
+}
+.table-text{
+    height: 40px;
+}
+#foot{
+    font-size: 10px;
+    margin-top: 0;
+    color: #5b5656;
+    font-style: italic;
+}
+
+.photo-button{
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: HGB8X_CNKI,serif;
+    font-size: large;
+    color: #ff8c8c;
+    /*text-align: unset;*/
+    /*margin-left: 10%;*/
+}
+.photo-button:hover{
+    color: black;
+    font-weight: 900;
+}
+#dialogg-mask{
+    position: fixed;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 80;
+    left: 0px;
+    display: none;
+}
+#dialogg{
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    z-index: 100;
+    top:35%;
+    left: 30%;
+    background-color: white;
+    border: 1px solid black;
+    display: none;
+}
+.opacity{
+    opacity: 0.7;
+    background-color: #2a2828;
+}
+#confirm-info{
+    width: 90%;
+    margin-left: 5%;
+    height: 90%;
+    margin-top: 3%;
+    border: 2px solid #dbdfe3;
+    font-family: HGB8X_CNKI,serif;
+    font-size: larger;
+}
+.infoo-button{
+    font-size: large;
+    margin-top: 6%;
+    background-color: #fc9e9e;
+    border: 0;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-left: 20%;
+}

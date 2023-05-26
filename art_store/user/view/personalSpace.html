@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>personalSpace</title>
+    <link href="../include/css/upperDirect.css" rel="stylesheet">
+    <link href="../include/css/personalSpace.css" rel="stylesheet">
+    <script src="../include/js/personalSpace.js"></script>
+    <link href="../include/css/shoppingCart.css" rel="stylesheet">
+    <script src="../include/js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<div>
+    <span id="name-logo">Wisdom Waste</span>
+    <br>
+    <span id="describe">you can find anything that you are interested in</span>
+    <a href="./index.php?a=showSearch" class="search">Search</a>
+    <a href="./index.php?a=personalSpace" class="right-up-link" id="username"><?=$user[0]?></a>
+    <a href="./index.php?a=showHomePageAfter&b=logout" class="right-up-link" id="logout">Logout</a>
+</div>
+<br>
+<nav class="medium-nav">
+    <a href="./index.php?a=showHomePageAfter" class="nav-link">HomePage</a>
+    <a href="./index.php?a=personalSpace" class="nav-link" id="myspace">My Space</a>
+    <a href="./index.php?a=showAllDetails" class="nav-link">ShopDetails</a>
+    <a href="./index.php?a=shoppingCart" class="nav-link">My Cart</a>
+    <a href="./index.php?a=uploadAndChange" class="nav-link">Upload</a>
+</nav>
+<hr id="hr">
+<div id="personal-info-frame">
+    <div id="info-left">
+        <div id="info-left-left">
+            <img id="head-photo" src="../../public/img/头像-女学生6.png">
+            <button class="info-button" onclick="addMoney()">Invest</button>
+            <button class="info-button">Shopping Cart</button>
+        </div>
+        <div id="personal-info">
+            <p>Name:&nbsp;&nbsp;<span id="name"><?=$user[0]?></span></p>
+            <p>LeftMoney:&nbsp;&nbsp;<span id="surplus">$&nbsp;<?=$user[5]?$user[5]:0?></span></p>
+            <p>Phone:&nbsp;&nbsp;<span id="phone"><?=$user[6]?></span></p>
+            <p>Email:&nbsp;&nbsp;<span id="email"><?=$user[1]?></span></p>
+            <p>Address:&nbsp;&nbsp;<span id="address"><?=$user[7]?></span></p>
+        </div>
+    </div>
+    <div id="info-right">
+        <span id="info-right-label">Something you like these days</span>
+        <div id="info-right-people">
+            <?php
+                while($footart=$footarts->fetch_row()){
+            ?>
+            <div class="people">
+                <a href="./index.php?a=showArtDetail&artid=<?=$footart[12]?>"><img class="people-photo" src="<?=$footart[11]?>"><br></a>
+                <span><?=$footart[1]?></span>
+            </div>
+            <?php  }?>
+        </div>
+    </div>
+</div>
+<div id="down-frame">
+    <div>
+        <span class="label">Upload</span>
+        <hr class="hr">
+        <div id="upload-photo">
+            <?php
+                while($artwork=$artworks->fetch_row()){
+            ?>
+            <div class="photo-div">
+                <a href="./index.php?a=showArtDetail&artid=<?=$artwork[12]?>"><img class="upload-photo" src="<?=$artwork[11]?>" title="see details"></a><br>
+                Name:&nbsp;&nbsp;<a id="artworkName" href="./index.php?a=showArtDetail&artid=<?=$artwork[12]?>" style="text-decoration:none;"><?=$artwork[0]?></a><br>
+                Upload-Date:&nbsp;&nbsp;<span><?=$artwork[4]?></span><br><br>
+                <a style="text-decoration: none;" href="./index.php?a=uploadAndChange&artid=<?=$artwork[12]?>" class="photo-button">Change</a>
+                <button class="photo-button" type="button" onclick="confirmdelete('<?=$artwork[12]?>')">Delete</button>
+                <br><br>
+            </div>
+            <!--遮罩层-->
+            <div id="dialogg-mask" class="dialogg-mask opacity"></div>
+            <!--弹出框div-->
+            <!--确认框中需有一个输入框然后加上确认!-->
+            <div id="dialogg" class="box">
+                <div id="confirm-info">
+                    <br>
+                    <span style="margin-left: 20%;">Are You Sure To Delete?</span>
+                </div>
+                <div style="margin-top: -25%;">
+                    <button type="button"  class="infoo-button" onclick="deleteConfirm()">DELETE</button>
+                    <button type="button"  class="infoo-button"  onclick="closeDeleteDialog()">CANCEL</button>
+                </div>
+            </div>
+            <script>
+                var id;
+                function confirmdelete(a){
+                    id=a;
+                    $("#dialogg").show()
+                    $("#dialogg-mask").show()
+                }
+                function closeDeleteDialog(){
+                    $("#dialogg").hide()
+                    $("#dialogg-mask").hide()
+                }
+                function deleteConfirm(){
+                    var request=new XMLHttpRequest();
+                    request.open('POST','./index.php?a=personalSpace',true);
+                    request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+                    var msg="delete=1&artworkid="+id;
+                    request.send(msg);
+                    request.onreadystatechange=function (){
+                        if(request.readyState==4&&request.status==200){
+                             var res = JSON.parse(request.responseText)
+                             if(res.code=='401'){
+                                 alert("can not delete because it has been sold out!");
+                             }else{
+                                 alert("delete success!");
+                             }
+                        }
+                    }
+                    window.location.href="./index.php?a=personalSpace";
+                }
+            </script>
+            <?php
+                }
+            ?>
+            <div class="photo-div">
+                <a href="./index.php?a=uploadAndChange"><img class="upload-photo" src="../../public/img/添加图片.png" title="see details"></a><br>
+                <span style="display: none">Name:&nbsp;&nbsp;></span><br>
+                <span style="display: none">Upload-Date:&nbsp;&nbsp;</span><br><br>
+                <button class="photo-button" style="display: none">Change</button>
+                <button class="photo-button" style="display: none"  type="button">Delete</button>
+                <br><br>
+            </div>
+            <br><br>
+        </div>
+        <hr class="hr">
+        <br>
+    </div>
+    <div>
+        <span class="label">Already Bought</span>
+        <hr class="hr">
+<!--        订单编号、订单时间、艺术品名称、订单金额-->
+        <div class="table-div">
+            <table class="table" id="buy-table" >
+                <tr class="table-header">
+                    <th>Art Name</th>
+                    <th>Cost</th>
+                    <th>Time</th>
+                    <th>Order ID</th>
+                </tr>
+                <?php
+                    while($buy=$buyList->fetch_row()){
+                ?>
+                <tr>
+                    <td class="name" title="see details"><a href="./index.php?a=showArtDetail&artid=<?=$buy[0]?>" style="text-decoration: none"><?=$buy[6]?></a></td>
+                    <td>$<?=$buy[1]?></td>
+                    <td><?=$buy[2]?></td>
+                    <td><?=$buy[4]?></td>
+                </tr>
+                <?php
+                }
+                ?>
+            </table>
+        </div>
+        <br>
+        <hr class="hr">
+        <br>
+    </div>
+    <div>
+        <span class="label">Already Sold</span>
+        <hr class="hr">
+        <!--       艺术品名称、卖出时间、售价与购买人的用户名、邮箱、电话、地址。-->
+        <div class="table-div">
+            <table class="table" id="sell-table" >
+                <tr class="table-header">
+                    <th>Art Name</th>
+                    <th>Time</th>
+                    <th>Price</th>
+                    <th>Purchaser Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>orderId</th>
+                </tr>
+                <?php
+                    $userEntity=new user();
+                    while($sell=$sellList->fetch_row()){
+                        $ssql="WHERE username='{$sell[3]}'";
+                        $buyuser=$userEntity->getUser($ssql);
+                ?>
+                <tr class="table-text">
+                    <td class="name" title="see details"><a href="./index.php?a=showArtDetail&artid=<?=$sell[0]?>" style="text-decoration: none"><?=$sell[6]?></a></td>
+                    <td><?=$sell[2]?></td>
+                    <td>$<?=$sell[1]?></td>
+                    <td><?=$sell[3]?></td>
+                    <td><?=$buyuser[6]?></td>
+                    <td><?=$buyuser[1]?></td>
+                    <td><?=$buyuser[7]?></td>
+                    <td><?=$sell[4]?></td>
+                </tr>
+                <?php
+                }
+                ?>
+            </table>
+        </div>
+        <br>
+        <hr class="hr">
+    </div>
+</div>
+<div id="foot">
+    <br><br>
+    <hr>
+    Have a good mood these days.
+    <br>
+    this is just available for lxy@2022. if you have any question, please send email to 2975533710@qq.com
+</div>
+<!--遮罩层-->
+<div id="dialog-mask" class="dialog-mask opacity"></div>
+<!--弹出框div-->
+<!--确认框中需有一个输入框然后加上确认!-->
+<?php
+$addmoney="INPUT MONEY";
+?>
+<div id="dialog" class="box">
+    <div id="pay-info">
+        <p style="margin-left: 12%">
+            PLEASE MAKE SURE TO ADD MONEY
+        </p>
+        <p class="info-p" style="margin-left: 12%">
+            <span class="pay-label">Add Money: &nbsp;&nbsp;</span>
+            <br><br>
+            <input type="text" onkeyup="moneyTest()" id="addMoney" name="addMoney" placeholder="<?=$addmoney?>" style="border: 2px solid black;width: 365px;height: 30px">
+            <br>
+            <span id="moneyhint" style="font-size: medium;color: #fc9e9e"></span>
+        </p>
+        <div id="pay-info-button">
+            <button type="button" id="return" class="pay-info-button"  onclick="closeDialog()">CANCEL</button>
+            <button type="button" id="confirm" class="pay-info-button" onclick="confirmAdd()">CONFIRM ADD</button>
+        </div>
+    </div>
+</div>
+    <script>
+        function addMoney(){
+            $("#dialog").show()
+            $("#dialog-mask").show()
+        }
+        function closeDialog(){
+            $("#dialog").hide()
+            $("#dialog-mask").hide()
+        }
+        function confirmAdd(){
+            var addMoney=document.getElementById('addMoney').value
+            var msg="addMoney="+addMoney;
+            console.log(msg);
+            var request=new XMLHttpRequest();
+            request.open('POST','./index.php?a=personalSpace',true);
+            request.setRequestHeader('Content-type','application/x-www-form-urlencoded')
+            request.send(msg);
+             alert("succeed adding money!!")
+            request.onreadystatechange=function (){
+                if(request.readyState==4&&request.status==200){
+                    console.log("connect success!");
+                }
+            }
+            window.location.href="./index.php?a=personalSpace";
+        }
+    </script>
+</body>
+</html>

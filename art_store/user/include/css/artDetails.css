@@ -1,0 +1,268 @@
+#main-div{
+    width: 100%;
+    height: 100%;
+}
+#shop-details{
+    color: #ff8c8c;
+}
+#photo{
+    border: 2px solid #949696;
+    margin-top: 3%;
+    height: 500px;
+    width: 500px;
+    /*float: left;*/
+    display: inline-block;
+}
+
+.msg{
+    font-size: large;
+    /*float: left;*/
+    position: absolute;
+    display: inline-block;
+    height: 490px;
+    width: 650px;
+    text-align: left;
+    margin-left: 4%;
+    margin-top: 2%;
+    background-color: rgb(245 221 221 / 58%);
+}
+
+#msg1{
+    font-size: large;
+    /*float: left;*/
+    height: 350px;
+    width: 355px;
+    text-align: left;
+    margin-left: 7%;
+    display: inline-block;
+    position: absolute;
+    margin-top: 3%;
+}
+
+#other-msg{
+    margin-top: 3%;
+    width: 270px;
+    margin-left: 7%;
+    display: inline-block;
+    border-right: 2px solid #dbdfe3;
+}
+#name{
+    margin-left: 7%;
+    margin-top: 2%;
+    margin-bottom: 4%;
+    font-size: x-large;
+    font-weight: 700;
+    font-family: HGB8X_CNKI,serif;
+}
+#upload{
+    font-size: large;
+    font-family: HGB8X_CNKI,serif;
+    color: #8f9191;
+}
+#sell-condition{
+    height: 30px;
+    border: 0;
+    margin-top: 27px;
+    font-size: medium;
+    font-family: HGB8X_CNKI,serif;
+    background-color: transparent;
+    font-weight: 700;
+    color: red;
+}
+.msg-item{
+    margin-top: 20px;
+    width: 85%;
+}
+.tag{
+    /*font-family: HGB8X_CNKI,serif;*/
+    font-weight: 700;
+    font-size: large;
+}
+.contain{
+    margin-left: 2%;
+    font-family: HGB8X_CNKI,serif;
+}
+#price{
+    color: #f86868;
+    font-size: larger;
+}
+
+#main-down{
+    margin-left:7%;
+}
+
+#main-down-up{
+    width: 100%;height: 47%;
+    margin-bottom: 3%;
+}
+
+#main-down-down{
+    width: 100%;height: 40%;
+}
+#icon-div{
+    margin-left: 1.7%;
+}
+.icon{
+    margin-left: 4%;
+    width: 23px;
+    height: 23px;
+}
+.icon:hover{
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+#icon-button{
+    border: 0;
+    background-color: transparent;
+    margin-left: 4%;
+    /*filter: invert(53%) sepia(70%) saturate(1647%) hue-rotate(321deg) brightness(100%) contrast(94%);*/
+}
+
+.comment{
+    font-size: larger;
+    margin-left: 1%;
+    font-family: HGDY_CNKI,serif;
+}
+#comment-frame{
+    width: 94%;
+    margin-top: 1%;
+    margin-left: 1%;
+    height: 78%;
+    border-right: 0;
+    border-left: 0;
+    border-top: 1px solid #a6a6a6;
+}
+
+.comment-item{
+    margin-bottom: 10px;
+}
+.head-photo{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+.comment-header{
+    display: inline-block;
+    margin-top: 0;
+    margin-left: 5px;
+    width: 14%;
+}
+.writer-name{
+    font-family: Dotum,serif;
+    font-weight: 900;
+    font-size: large;
+}
+.comment-date{
+    /*margin-top: 50px;*/
+    color: #a6a6a6;
+    font-style: italic;
+    font-size: small;
+}
+.comment-content{
+    display: inline-block;
+    text-align: left;
+    width: 50%;
+    font-family: HGB8X_CNKI,serif;
+    font-size: medium;
+    color: #5b5656;
+    position: absolute;
+}
+#comment-input{
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 300px;
+    height: 150px;
+    border-radius: 50%;
+    padding-left: 10px;
+    font-size: large;
+}
+#my-comment{
+    padding-left: 10px;
+    padding-top: 10px;
+    font-family: HGB8X_CNKI,serif;
+    margin-top: 2%;
+    width: 70%;
+    height: 80px;
+    font-size: medium;
+    border: 1px solid black;
+}
+.content{
+    margin-top: 5px;
+}
+.comment-hr{
+    border: 0.5px solid #dbdfe3;
+}
+
+#own-comment-frame{
+    display: inline-block;
+    width: 30%;
+    margin-left: 5%;
+}
+#submit-comment{
+    margin-top: 1%;
+    margin-left: 62%;
+    background-color: #fc9e9e;
+    width: 100px;
+    height: 40px;
+    border: 0;
+    font-size: large;
+    cursor: pointer;
+}
+#submit-comment:hover{
+    font-weight: 900;
+}
+#foot{
+    font-size: 10px;
+    margin-left: -7%;
+    margin-top: 0;
+    color: #5b5656;
+    font-style: italic;
+}
+
+
+.demo {
+    display: inline-block;
+    width: 500px;
+    margin: 20px;
+    position: relative;
+}
+
+.small-box {
+    position: relative;
+    z-index: 1;
+}
+
+.float-box {
+    display: none;
+    width: 160px;
+    height: 120px;
+    position: absolute;
+    background: #ffffcc;
+    border: 1px solid #ccc;
+    opacity: 0.5;
+    pointer-events: none;
+}
+.small-img{
+    width: 500px;
+    height: 500px;
+    display:block;
+}
+
+.big-box {
+    display: none;
+    position: absolute;
+    top: 24%;
+    left: 50%;
+    width: 20%;
+    height: 30%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.big-box img {
+    position: absolute;
+    z-index: 5
+}

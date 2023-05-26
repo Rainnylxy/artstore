@@ -1,0 +1,30 @@
+body{
+
+}
+#shop-details{
+    color: #fc9e9e;
+}
+#img-frame{
+    margin-left: 0;
+}
+.img-div{
+    width: 23%;
+    display: inline-block;
+    margin-left: 9%;
+    margin-bottom: 2%;
+}
+.hottest-work{
+    height: 250px;
+}
+.link{
+    margin-left: 30%;
+    text-decoration: none;
+    font-weight: 500;
+    color: #ff8c8c;
+    font-style: italic;
+    font-size: medium;
+}
+.link:hover{
+    color: black;
+    font-weight: 900;
+}

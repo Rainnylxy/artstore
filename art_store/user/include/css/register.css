@@ -1,0 +1,63 @@
+.input1{
+    border-bottom: 2px solid black;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-top-width: 0;
+    background-color: transparent;
+    margin-left: 5%;
+    height: 36px;
+    font-family: HGB8X_CNKI,serif;
+    color: black;
+    font-weight: 900;
+    font-size: 15px;
+}
+#login-frame{
+    width: 33%;
+}
+.input1::placeholder{
+    color: #484646;
+}
+.input1:focus{
+    outline: none;
+}
+
+#password-tip{
+    position: absolute;
+    margin-left: 35px;
+    font-size: x-small;
+    margin-top: 5px;
+}
+
+.hint2{
+    position: absolute;
+    margin-left: 35px;
+    font-size: x-small;
+    margin-top: 5px;
+}
+
+.hint1{
+    margin-left: 6%;
+    float: left;
+    position: absolute;
+    font-size: x-small;
+    margin-top: 5px;
+}
+#weak{
+    margin-left: 10px;
+}
+#medium{
+    background-color: antiquewhite;
+}
+#strong{
+    background-color: #fc9e9e;
+}
+.password-warn{
+    display: none;
+    font-size: x-small;
+    margin-left: 0;
+    background-color: #eee7ea;
+}
+#warn{
+    width: 210px;
+    margin-left: 170px;
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>search</title>
+    <link href="../include/css/upperDirect.css" rel="stylesheet">
+    <link href="../include/css/searchPage.css" rel="stylesheet">
+    <script src="../include/js/searchSlicePage.js"></script>
+</head>
+<body>
+<div>
+    <span id="name-logo">Wisdom Waste</span>
+    <br>
+    <span id="describe">you can find anything that you are interested in</span>
+    <a href="./index.php?a=showSearch" class="search">Search</a>
+    <a href="./index.php?a=PersonalSpace" class="right-up-linkk" id="username"><?=$username?$username:'login in'?></a>
+    <a href="./index.php?a=showHomePageAfter&b=logout" class="right-up-linkk" id="logout">Logout</a>
+</div>
+<br>
+<nav class="medium-nav">
+    <a href="./index.php?a=showHomePageAfter" class="nav-link">HomePage</a>
+    <a href="./index.php?a=personalSpace" class="nav-link">My Space</a>
+    <a href="./index.php?a=showAllDetails" class="nav-link">ShopDetails</a>
+    <a href="./index.php?a=shoppingCart" class="nav-link">My Cart</a>
+    <a href="./index.php?a=uploadAndChange" class="nav-link">Upload</a>
+</nav>
+<hr id="hr">
+<div id="mainn-div">
+    <div>
+        <br>
+        <form method="post" name="subform">
+            <input placeholder="Search by name" type="text" name="sname" value="<?=$sname?>" class="search-big"  style="margin-left: 5%">
+            <input placeholder="Search by artist" type="text" name="sartist" value="<?=$sartist?>" class="search-big"  style="margin-left: 2%">
+            <input placeholder="Search all" type="text" name="allsearch" value="<?=$allsearch?>" class="search-big"  style="margin-left: 2%">
+            <div style="display: inline;font-family: HGB8X_CNKI,serif;margin-left: 2%">
+                <input type="text" value="Order: " style="border: 0;width: 60px;font-size: large">
+                <input type="radio"  name="paixu" id="paixu1" value="price" style="cursor: pointer">
+                <label for="paixu1" style="cursor:pointer">price</label>
+                <input type="radio" value="visits" style="cursor: pointer"  name="paixu" id="paixu2">
+                <label for="paixu1" style="cursor:pointer">visits</label>
+                <input type="radio" value="name" name="paixu" id="paixu3" style="cursor: pointer">
+                <label for="paixu1" style="cursor:pointer">name</label>
+            </div>
+            <button type="submit" id="submitbutton" name="subbutton">Search</button>
+        </form>
+    </div>
+        <?php
+            if(mysqli_num_rows($result)){
+                while($row=$res->fetch_row())
+                {
+        ?>
+    <div id="img-frame">
+        <div class="img-down">
+            <div style="width: 100px;background-color:#D3DEDC;height: 10px"></div><br>
+            <a href="../controller/index.php?a=showArtDetail&artid=<?=$row[12]?>"><img src="<?=$row[11]?>" class="hottest-work"></a>
+            <br>
+            <div class="msg">
+                <span style="font-size: small">Name</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[0]?></span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size: small">Artist</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[1]?></span><br>
+                <span style="font-size: medium">Price</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: medium;color: #fc9e9e;font-weight: 900">$&nbsp;<?=$row[2]?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>Visits</span>: <?=$row[3]?>
+                <br>
+                <span>Introduction</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: large"><?=$row[9]?$row[9]:'no introduction'?></span>
+            </div>
+        </div>
+        <?php
+            if($row=$res->fetch_row()){}
+            else{ break;}
+        ?>
+        <div class="img-down">
+            <div style="width: 100px;background-color:#DCD6F7;height: 10px"></div><br>
+            <a href="../controller/index.php?a=showArtDetail&artid=<?=$row[12]?>"><img src="<?=$row[11]?>" class="hottest-work"></a>
+            <br>
+            <div class="msg">
+                <span style="font-size: small">Name</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[0]?></span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size: small">Artist</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[1]?></span><br>
+                <span style="font-size: medium">Price</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: medium;color: #fc9e9e;font-weight: 900">$&nbsp;<?=$row[2]?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>Visits</span>: <?=$row[3]?>
+                <br>
+                <span>Introduct</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: large"><?=$row[9]?$row[9]:'no introduction'?></span>
+            </div>
+        </div>
+        <?php
+            if($row=$res->fetch_row()){}
+            else{ break;}
+        ?>
+        <div class="img-down">
+            <div style="width: 100px;background-color:#8785A2;height: 10px"></div><br>
+            <a href="../controller/index.php?a=showArtDetail&artid=<?=$row[12]?>"><img src="<?=$row[11]?>" class="hottest-work"></a>
+            <br>
+            <div class="msg">
+                <span style="font-size: small">Name</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[0]?></span>&nbsp;&nbsp;&nbsp;
+                <span style="font-size: small">Artist</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: larger"><?=$row[1]?></span><br>
+                <span style="font-size: medium">Price</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: medium;color: #fc9e9e;font-weight: 900">$&nbsp;<?=$row[2]?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>Visits</span>: <?=$row[3]?>
+                <br>
+                <span>Introduct</span>:&nbsp;&nbsp;&nbsp;<span style="font-size: large"><?=$row[9]?$row[9]:'no introduction'?></span>
+            </div>
+        </div>
+        <br><br>
+        <?php
+                }
+            }else{
+        ?>
+        <div style="margin-left:40%;font-style:italic;margin-top:10%;font-size:large">Can't find right artworks</div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        
+        <?php
+            }
+        ?>
+    </div>
+    <div id="page-slice">
+        <span>Total</span>
+        <input type="text" value="<?=$totalPage?>" style="width: 40px;text-align: center" disabled>
+        <span style="margin-right: 2%">pages</span>
+        <?php
+            $index=1;
+            while($index<=$totalPage){
+                if($index==$pageNum){
+                    echo "<button type='submit' onclick='toSomePageChoose(this)' style='width: 40px;text-align: center;margin-right: 2%;background-color: #fc9e9e;border: 0'>".$index."</button>";
+                }else{
+                    echo "<button type='submit' onclick='toSomePageChoose(this)' style='width: 40px;text-align: center;margin-right: 2%;border: 0'>".$index."</button>";
+                }
+                $index++;
+            }
+        ?>
+        <span>Go to </span>
+        <input type="text" onchange="toSomePageInput()" id="inputpage" value="<?=$pageNum?>" style="width: 40px;text-align: center">
+        <span style="margin-right: 2%">page</span>
+        <button type="button" onclick="toLastPage()" value="Last" class="slicepage">Last</button>
+        <button type="button" onclick="toNextPage()" value="Next" class="slicepage" style="margin-left: 1%;">Next</button>
+        <button style="display: none" id="pageNum"><?=$pageNum?></button>
+    </div>
+    <div id="foot">
+        <p>
+        <hr id="hrr">
+            Have a good mood these days.
+            <br>
+            this is just available for lxy@2022. if you have any question, please send email to 2975533710@qq.com
+        </p>
+    </div>
+</div>
+<script>
+    function toSomePageChoose(data){
+   var chopage=(data.innerText);
+    slicePage(chopage)
+}
+function toSomePageInput(){
+    var inpage = document.getElementById('inputpage').value;
+    slicePage(inpage)
+}
+function toLastPage(){
+    var pageNow = document.getElementById('pageNum').innerText;
+    slicePage(--pageNow)
+}
+function toNextPage(){
+    var pageNow = document.getElementById('pageNum').innerText;
+    slicePage(++pageNow)
+}
+function slicePage(pageNum){
+    var msg="pageNum="+pageNum;
+    console.log(msg)
+    var request=new XMLHttpRequest();
+    request.open('POST','./getPageNum.php',true);
+    request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+    request.send(msg)
+    request.onreadystatechange=function (){
+        if(request.readyState==4&&request.status==200){
+            var res=JSON.parse(request.responseText);
+            console.log("success connect!!")
+        }
+    }
+    setTimeout(function() { window.location.href="./index.php?a=showSearch";}, 200);
+}
+
+</script>
+</body>
+</html>

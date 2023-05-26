@@ -1,0 +1,156 @@
+#name-logo{
+    font-family: "Arial Narrow", serif;
+    font-weight: 900;
+    font-size: large;
+    width: 20%;
+    margin-right: 80%;
+}
+#describe{
+    color: #8f9191;
+    font-size: x-small;
+    font-family: HGB8X_CNKI,serif;
+    font-weight: 500;
+    margin-right: 65%;
+}
+.right-up-link{
+    text-decoration: none;
+    font-weight: 500;
+    color: #5b5656;
+    font-style: italic;
+    font-size: medium;
+}
+.right-up-link-re{
+    margin-left: 2%;
+    text-decoration: none;
+    font-weight: 500;
+    color: #5b5656;
+    font-style: italic;
+    font-size: medium;
+}
+.right-up-link:hover{
+    color: #ff8c8c;
+}
+.right-up-link-re:hover{
+    color: #ff8c8c;
+}
+
+#medium-p{
+    font-size: xxx-large;
+    font-weight: 700;
+    margin-left: 33%;
+}
+.main-div{
+    height: 600px
+}
+#login-photo-div{
+    display: inline-block;
+    width: 50%;
+    height: 70%;
+    margin-left: 5%;
+}
+#login-photo{
+    width: 100%;
+    height: 120%;
+}
+#login-frame{
+    background: url("../../../public/img/5.jpg");
+    background-size: cover;
+    /*background-color: #f8f8f8;*/
+    margin-top: 6%;
+    text-align: center;
+    width: 30%;
+    height: 45%;
+    margin-left: 7%;
+    border: 1px solid whitesmoke;
+    display: inline-block;
+    position: absolute;
+}
+.frame{
+    opacity: 0.8;
+}
+#login-in{
+    margin-top: 15px;
+    display: inline-block;
+    font-size: x-large;
+    /*font-family: HGB8X_CNKI,serif;*/
+    font-style: italic;
+}
+
+.input{
+    padding-left: 15px;
+    width: 50%;
+    height: 40px;
+    margin-top: 10px;
+    border-bottom: 2px solid black;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-top-width: 0;
+    background-color: transparent;
+    font-family: HGB8X_CNKI,serif;
+    font-weight: 700;
+    font-size: 15px;
+}
+.input::placeholder{
+    color: #484646;
+}
+.input:focus{
+    outline: none;
+}
+#password{
+    margin-bottom: 1%;
+}
+#check-code{
+    width: 30%;
+}
+#code{
+    cursor: pointer;
+    margin-bottom: -17px;
+}
+#submit1{
+    background-color: transparent;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    padding-left: 0;
+    font-size: x-large;
+    font-family: HGB8X_CNKI,serif;
+    cursor: pointer;
+    font-weight: 900;
+}
+#submit2{
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    margin-left: 10%;
+    background-color: transparent;
+    font-size: x-large;
+    font-family: HGB8X_CNKI,serif;
+    cursor: pointer;
+    font-weight: 900;
+}
+#submit1:hover{
+
+}
+#submit2:hover{
+    font-weight: 900;
+}
+
+
+#foot{
+    font-size: 10px;
+    margin-top: 5%;
+    color: #5b5656;
+    font-style: italic;
+}
+
+#hint{
+    color: red;
+    font-size: x-small;
+    margin-left: 95px;
+    width: 200px;
+    font-style: italic;
+}
+
+
+
+

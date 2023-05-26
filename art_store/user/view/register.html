@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <title>register</title>
+    <link href="../include/css/login.css" rel="stylesheet">
+    <link href="../include/css/register.css" rel="stylesheet">
+    <script src="../include/js/register.js"></script>
+</head>
+<body>
+<div class="main-div">
+    <div>
+        <span id="name-logo">Wisdom Waste</span>
+        <br>
+        <span id="describe">you can find anything that you are interested in</span>
+        <a href="./index.php?a=showHomePageBefore" class="right-up-link">Home Page</a>
+        <a href="./index.php?a=show" class="right-up-link-re">sign in</a>
+    </div>
+    <div>
+        <br><br>
+        <span id="medium-p">
+        W i s d o m--W a s t e
+    </span>
+    </div>
+    <br>
+    <br>
+    <div id="login-photo-div">
+        <img src="../../public/img/homeMainPhoto.png" id="login-photo">
+    </div>
+    <div id="login-frame" class="frame">
+        <div id="login-in">Welcome to join us</div>
+        <br><br>
+<!--        用户名、密码、确认密码、邮箱、电话、地址-->
+        <form id="login-form" method="post" action="../controller/register.php">
+            <input class="input1" type="text" placeholder="Username" id="username" onkeyup="test()" name="username">
+            <input class="input1" type="password" placeholder="Password" id="password1" onkeyup="test()" name="password" title="can not be all numbers">
+            <br>
+            <div class="hint1">
+                <span id="username-tip"></span>
+            </div>
+            <span id="password-tip"></span>
+            <br>
+            <span id="warn">
+                <span class="password-warn" id="weak">weak</span>
+                <span class="password-warn" id="medium">medium</span>
+                <span class="password-warn" id="strong">strong</span>
+            </span>
+            <br>
+            <input class="input1" type="password" placeholder="Confirm Password" id="password2" onkeyup="test()">
+            <input class="input1" type="text" placeholder="Email" id="email" onkeyup="test()" name="email"><br>
+            <div class="hint1">
+                <span id="confirm-password"></span>
+            </div>
+            <span class="hint2" id="email-tip"></span>
+            <br>
+            <input class="input1" type="text" placeholder="Telephone" id="phone" onkeyup="test()" name="phone">
+            <input class="input1" type="text" placeholder="Address" id="address" onkeyup="test()" name="address"><br>
+            <div class="hint1">
+                <span id="phone-tip"></span>
+            </div>
+            <span class="hint2" id="address-tip"></span>
+            <br>
+            <div id="submit-frame">
+                <br>
+                <button id="submit1">submit</button>
+                <button id="submit2" onclick="toLogin()" type="button">sign in</button>
+                <script>
+                    function toLogin(){
+                        window.location.href='./index.php?a=show'
+                    }
+                </script>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="foot">
+    <br><br><br>
+    <hr>
+    Have a good mood these days.
+    <br>
+    this is just available for lxy@2022. if you have any question, please send email to 2975533710@qq.com
+</div>
+</body>
+</html>
